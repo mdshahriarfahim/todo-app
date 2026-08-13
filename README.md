@@ -1,6 +1,6 @@
 # 📝 Interactive Todo List App
 
-A lightweight, responsive, and easy-to-use Todo List application built using HTML, CSS, and Vanilla JavaScript.
+A lightweight, responsive, and easy-to-use Todo List application built using HTML, CSS, and  JavaScript.
 
 ## 🚀 Features
 
