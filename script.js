@@ -2,8 +2,21 @@ const todoInput = document.getElementById("todoInput");
 const addBtn = document.getElementById("addbtn");
 const todoList = document.getElementById("todoList");
 const countDisplay = document.getElementById("count");
+const clearAllBtn = document.getElementById("clearAllBtn");
 
 let totalTasks = 0;
+
+// Helper function to update total task count and button visibility
+function updateCount() {
+    countDisplay.textContent = `Total: ${totalTasks}`;
+    
+    // Toggle 'Clear All' button visibility based on task count
+    if (totalTasks > 0) {
+        clearAllBtn.style.display = "block";
+    } else {
+        clearAllBtn.style.display = "none";
+    }
+}
 
 function addTask() {
     const taskText = todoInput.value.trim();
@@ -16,30 +29,40 @@ function addTask() {
 
     // Create list item element
     const li = document.createElement("li");
-    li.textContent = taskText + " ";
+    
+    // Task text container
+    const span = document.createElement("span");
+    span.textContent = taskText;
 
     // Create delete button element
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
-    deleteBtn.style.marginLeft = "10px";
-    deleteBtn.style.cursor = "pointer";
+    deleteBtn.className = "delete-btn";
 
-    // Handle delete action and update total counter
+    // Handle single item deletion
     deleteBtn.addEventListener("click", function () {
         todoList.removeChild(li);
         totalTasks--;
-        countDisplay.textContent = `Total: ${totalTasks}`;
+        updateCount();
     });
 
-    // Append delete button to list item and list item to task list
+    // Append text and delete button to list item
+    li.appendChild(span);
     li.appendChild(deleteBtn);
     todoList.appendChild(li);
 
-    // Update counter and reset input field
+    // Increment count and reset input field
     totalTasks++;
-    countDisplay.textContent = `Total: ${totalTasks}`;
+    updateCount();
     todoInput.value = "";
 }
+
+// Clear all tasks logic
+clearAllBtn.addEventListener("click", function () {
+    todoList.innerHTML = "";
+    totalTasks = 0;
+    updateCount();
+});
 
 // Event Listeners
 addBtn.addEventListener("click", addTask);
