@@ -41,7 +41,7 @@ input {
     outline: none;
 }
 
-button {
+#addbtn {
     padding: 8px 14px;
     background-color: #28a745;
     color: white;
@@ -50,7 +50,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+#addbtn:hover {
     background-color: #218838;
 }
 
@@ -59,12 +59,44 @@ ul {
     margin-bottom: 15px;
 }
 
-li {
+
+ul li {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
     background: #e9ecef;
     padding: 8px 12px;
     border-radius: 4px;
     margin-bottom: 6px;
     word-break: break-all;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+#clearAllBtn {
+    background-color: #ff4d4d;
+    color: white;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#clearAllBtn:hover {
+    background-color: #e60000;
 }
 
 #count {
